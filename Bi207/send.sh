@@ -19,8 +19,8 @@ snswmgr_load_setup falaise@5.1.5
 
 ${FAL_DIR}/flsimulate -c ${MY_DIR}/simu_setup.conf -o ${MY_DIR}/simu_Bi.brio
 
-${FAL_DIR}/flreconstruct -i ${MY_DIR}/simu_Bi.brio -p ${CONF_FAL}/official-2.0.0.conf -o ${MY_DIR}/reco_Bi.brio
+# ${FAL_DIR}/flreconstruct -i ${MY_DIR}/simu_Bi.brio -p ${CONF_FAL}/official-2.0.0.conf -o ${MY_DIR}/reco_Bi.brio
 
-${FAL_DIR}/flreconstruct -i ${MY_DIR}/reco_Bi.brio -p ${SW_DIR}/CimrmanModule/reco.conf -o ${MY_DIR}/CM_reco_Bi.brio
+${FAL_DIR}/flreconstruct -i ${MY_DIR}/simu_Bi.brio -p ${MY_DIR}/reco.conf -o ${MY_DIR}/CM_reco_Bi.brio
 
 # ${FAL_DIR}/flreconstruct -i ${MY_DIR}/CM_reco_Bi.brio -p ${SW_DIR}/SNCuts/build/SNCutsPipeline.conf -o ${MY_DIR}/SNC_reco_Bi.brio
