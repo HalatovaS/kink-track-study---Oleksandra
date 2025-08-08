@@ -15,10 +15,15 @@ do
 	cp ../simu.profile "$num"
 	cp ../reco.conf "$num"
 	cp ../pipeline.conf "$num"
+	cp ../SNCutsPipeline.conf "$num"
 	
 	
 	sbatch \
 	--output="${DATA_DIR}/DATA/$num/slurm-%j.out" \
-	../send.sh "$num"
+	../send_simu.sh "$num"
+	
+	sbatch \
+	--output="${DATA_DIR}/DATA/$num/slurm-%j.out" \
+	../send_cuts.sh "$num"
 done
 
