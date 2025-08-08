@@ -5,9 +5,10 @@ DATA_DIR="/sps/nemo/scratch/ohalatova/kink_track_study/test_of_jobs"
 mkdir DATA
 cd DATA
 
-num_of_jobs=$1
+first_val=$1
+second_val=$2
 
-for ((num=0; num < num_of_jobs; num++))
+for ((num=first_val; num<=second_val; num++))
 do 
 	mkdir "$num"
 	
