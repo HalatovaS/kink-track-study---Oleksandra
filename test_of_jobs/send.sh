@@ -18,7 +18,7 @@ snswmgr_load_setup falaise@5.1.5
 
 num=$1
 
-${FAL_DIR}/flsimulate -c ${MY_DIR}simu_setup.conf -o ${MY_DIR}/DATA/$num/simu_Bi_$num.brio
+${FAL_DIR}/flsimulate -c ${MY_DIR}/simu_setup.conf -o ${MY_DIR}/DATA/$num/simu_Bi_$num.brio
 
 ${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/simu_Bi_$num.brio -p ${MY_DIR}/reco.conf -o ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio
 
