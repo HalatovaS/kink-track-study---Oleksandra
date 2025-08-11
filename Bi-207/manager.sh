@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DATA_DIR="/sps/nemo/scratch/ohalatova/kink_track_study/test_of_jobs"
+DATA_DIR="/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207"
 
 mkdir DATA
 cd DATA
@@ -17,6 +17,7 @@ do
 	cp ../reco.conf "$num"
 	cp ../pipeline.conf "$num"
 	cp ../SNCutsPipeline.conf "$num"
+	cp ../simu_setup.conf "$num"
 		
 		sbatch \
 		--output="${DATA_DIR}/DATA/$num/slurm-%j.out" \

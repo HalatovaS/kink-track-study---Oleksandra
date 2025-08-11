@@ -10,7 +10,7 @@
 #SBATCH --cpus-per-task=1
 
 FAL_DIR=/sps/nemo/sw/redhat-9-x86_64/snsw/opt2/falaise-5.1.5/bin
-MY_DIR=/sps/nemo/scratch/ohalatova/kink_track_study/Bi207
+MY_DIR=/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207
 # SW_DIR=/sps/nemo/scratch/ohalatova/softwares
 
 source ${THRONG_DIR}/config/supernemo_profile.bash  
