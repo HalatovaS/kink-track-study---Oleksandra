@@ -17,18 +17,10 @@ do
 	cp ../reco.conf "$num"
 	cp ../pipeline.conf "$num"
 	cp ../SNCutsPipeline.conf "$num"
-	
-	if ["$name_of_script" = "simu"]; then	
-	
+		
 		sbatch \
 		--output="${DATA_DIR}/DATA/$num/slurm-%j.out" \
-		../send_simu.sh "$num"
-	fi
-	if ["$name_of_script" = "cuts"]; then
-	
-		sbatch \
-		--output="${DATA_DIR}/DATA/$num/slurm-%j.out" \
-		../send_cuts.sh "$num"
-	fi
+		../"$name_of_script" "$num"
+		
 done
 
