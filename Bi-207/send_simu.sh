@@ -6,7 +6,7 @@
 #SBATCH --mem=10G
 #SBATCH --licenses=sps
 
-#SBATCH --time=15:00
+#SBATCH --time=24:00:00
 #SBATCH --cpus-per-task=1
 
 FAL_DIR=/sps/nemo/sw/redhat-9-x86_64/snsw/opt2/falaise-5.1.5/bin
