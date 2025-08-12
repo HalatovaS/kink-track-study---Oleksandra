@@ -21,3 +21,4 @@ ${FAL_DIR}/flsimulate -c ${MY_DIR}/simu_setup.conf -o ${MY_DIR}/DATA/$num/simu_B
 
 ${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/simu_Bi_$num.brio -p ${MY_DIR}/reco.conf -o ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio
 
+rm -f ${MY_DIR}/DATA/$num/simu_Bi_$num.brio     # -f ensures it will not complain if file doen't exist
