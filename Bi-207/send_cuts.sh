@@ -6,7 +6,7 @@
 #SBATCH --mem=10G
 #SBATCH --licenses=sps
 
-#SBATCH --time=15:00
+#SBATCH --time=04:00:00
 #SBATCH --cpus-per-task=1
 
 source ${THRONG_DIR}/config/supernemo_profile.bash  

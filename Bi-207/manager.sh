@@ -2,7 +2,7 @@
 
 DATA_DIR="/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207"
 
-mkdir DATA
+mkdir -p DATA
 cd DATA
 
 first_val=$1

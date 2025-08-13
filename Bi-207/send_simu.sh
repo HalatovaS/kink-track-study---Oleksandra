@@ -3,10 +3,10 @@
 # SLURM options:
 
 #SBATCH --job-name=exercise_job
-#SBATCH --mem=10G
+#SBATCH --mem=3500M
 #SBATCH --licenses=sps
 
-#SBATCH --time=24:00:00
+#SBATCH --time=03:30:00
 #SBATCH --cpus-per-task=1
 
 FAL_DIR=/sps/nemo/sw/redhat-9-x86_64/snsw/opt2/falaise-5.1.5/bin
