@@ -11,12 +11,12 @@ name_of_script=$3
 
 for ((num=first_val; num<=second_val; num++))
 do 
-	mkdir "$num"
+	mkdir -p "$num"
 	
 	cp ../simu.profile "$num"
 	cp ../reco.conf "$num"
 	cp ../pipeline.conf "$num"
-	cp ../SNCutsPipeline.conf "$num"
+	cp ../SNCutsAndMimodule.conf "$num"
 	cp ../simu_setup.conf "$num"
 		
 		sbatch \

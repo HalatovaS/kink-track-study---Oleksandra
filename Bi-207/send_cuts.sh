@@ -3,10 +3,10 @@
 # SLURM options:
 
 #SBATCH --job-name=exercise_job
-#SBATCH --mem=10G
+#SBATCH --mem=3500M
 #SBATCH --licenses=sps
 
-#SBATCH --time=04:00:00
+#SBATCH --time=03:30:00
 #SBATCH --cpus-per-task=1
 
 source ${THRONG_DIR}/config/supernemo_profile.bash  
@@ -17,4 +17,4 @@ MY_DIR=/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207
 
 num=$1
 
-${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio -p ${MY_DIR}/SNCutsPipeline.conf -o ${MY_DIR}/DATA/$num/SNC_reco_Bi_$num.brio
+${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio -p ${MY_DIR}/SNCutsAndMiModule.conf -o ${MY_DIR}/DATA/$num/reco_cut_Bi_$num.brio
