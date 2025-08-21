@@ -3,17 +3,24 @@
 #include <TCanvas.h>
 #include <TROOT.h>
 #include <TStyle.h>
+#include <TPaveStats.h>
 #include <iostream>
 
 void visu()
 {
- TFile* f = TFile::Open("DATA/3/vertices.root", "READ");
+ TFile* f = TFile::Open("DATA/all_vertices.root", "READ");
+ TH2F* hVertices = (TH2F*)f->Get("hAll");
  
- TH2F* hVertices = (TH2F*)f->Get("hVertices");
- TCanvas *c1 = new TCanvas("c1", "Vertex Distribution", 800, 600);
+ TCanvas *c1 = new TCanvas("c1", "Vertex Distribution", 1000, 800);
  
- hVertices->SetTitle("Vertex positions;Y [mm];Z [mm]");
+ gStyle->SetNumberContours(255);
+ 
+ gStyle->SetStatFontSize(0.04);
+ 
+ hVertices->SetTitle("All events;Y [mm];Z [mm]");
+ 
  hVertices->Draw("COLZ");
+ c1->SetLogz();
  
  c1->Update();
  
@@ -21,14 +28,14 @@ void visu()
   if (stbox) {
   	stbox->SetX1NDC(0.1);
   	stbox->SetX2NDC(0.3);
-  	stbox->SetY1NDC(0.9);
-  	stbox->SetY2NDC(1.0);
+  	stbox->SetY1NDC(0.8);
+  	stbox->SetY2NDC(0.9);
   }
   
   c1->Modified();
   c1->Update();
  
- c1->SaveAs("DATA/3/vert_visu.png");
+ c1->SaveAs("DATA/all_vert_visu.png");
  
 }
 

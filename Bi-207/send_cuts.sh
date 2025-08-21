@@ -17,6 +17,6 @@ MY_DIR=/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207
 
 num=$1
 
-${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio -p ${MY_DIR}/SNCutsAndMiModule.conf -o ${MY_DIR}/DATA/$num/reco_cut_Bi_$num.brio
+${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio -p ${MY_DIR}/SNCutsAndMiModule.conf -o ${MY_DIR}/DATA/$num/cuted_reco_$num.brio
 
-rm -f ${MY_DIR}/DATA/$num/SNCutsPipeline.conf
+
