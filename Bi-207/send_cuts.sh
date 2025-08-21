@@ -6,7 +6,7 @@
 #SBATCH --mem=3500M
 #SBATCH --licenses=sps
 
-#SBATCH --time=03:30:00
+#SBATCH --time=00:30:00
 #SBATCH --cpus-per-task=1
 
 source ${THRONG_DIR}/config/supernemo_profile.bash  
@@ -18,3 +18,5 @@ MY_DIR=/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207
 num=$1
 
 ${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio -p ${MY_DIR}/SNCutsAndMiModule.conf -o ${MY_DIR}/DATA/$num/reco_cut_Bi_$num.brio
+
+rm -f ${MY_DIR}/DATA/$num/SNCutsPipeline.conf

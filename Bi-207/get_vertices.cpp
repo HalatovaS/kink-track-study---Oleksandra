@@ -16,7 +16,7 @@ R__LOAD_LIBRARY(../../softwares/MiModule/lib/libMiModule.so);
 
 void get_vertices() 
 {
-  TFile* f = TFile::Open("/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207/DATA/2/Default.root", "READ");
+  TFile* f = TFile::Open("/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207/DATA/3/Default.root", "READ");
   TTree* t = (TTree*)f->Get("Event"); //ged tree named "Event"
   
   MiEvent* Eve = new MiEvent(); //Attach MiEvent object
@@ -24,8 +24,8 @@ void get_vertices()
   
   
   TH2F* hVertices = new TH2F("hVertices", "Vertex positions;Y [mm];Z [mm]",
-  					  200, -1500, 1500,     //ybins, ymin, ymax
-  					  200, -3000, 3000);     //zbins, zmin, zmax
+  					  1000, -2500, 2500,     //ybins, ymin, ymax
+  					  1000, -2000, 2000);     //zbins, zmin, zmax
   //loop over entries
   Long64_t nentries = t->GetEntries(); //returns number of entries stored in the tree
   for (Long64_t i=0; i<nentries; i++)  
@@ -46,7 +46,7 @@ void get_vertices()
   	}
   }
   
-  TFile* f_output = new TFile("/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207/DATA/2/vertices.root", "RECREATE");
+  TFile* f_output = new TFile("/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207/DATA/3/vertices.root", "RECREATE");
   
   hVertices->Write();
   f_output->Close();
