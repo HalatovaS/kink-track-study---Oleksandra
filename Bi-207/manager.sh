@@ -12,16 +12,17 @@ name_of_script=$3
 for ((num=first_val; num<=second_val; num++))
 do 
 	mkdir -p "$num"
+	cd "$num"
 	
-	cp ../simu.profile "$num"
-	cp ../reco.conf "$num"
-	cp ../pipeline.conf "$num"
-	cp ../SNCutsAndMimodule.conf "$num"
-	cp ../simu_setup.conf "$num"
+	cp ../../simu.profile
+	cp ../../reco.conf 
+	cp ../../pipeline.conf 
+	cp ../../SNCutsAndMimodule.conf 
+	cp ../../simu_setup.conf 
 		
 		sbatch \
 		--output="${DATA_DIR}/DATA/$num/slurm-%j.out" \
-		../"$name_of_script" "$num"
+		../../"$name_of_script" "$num"
 		
 done
 
