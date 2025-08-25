@@ -16,13 +16,14 @@ do
 	cp ../simu.profile "$num"
 	cp ../reco.conf "$num"
 	cp ../pipeline.conf "$num"
-	cp ../SNCutsAndMiModule.conf "$num" 
+	cp ../str_SNCutsAndMiModule.conf "$num"
+	cp ../knk_SNCutsAndMiModule.conf "$num"
 	cp ../simu_setup.conf "$num"
 		
 		cd "$num"
 		
 		sbatch \
-		--output="${DATA_DIR}/DATA/$num/slurm-%j.out" \
+		--output="${DATA_DIR}/DATA/$num/cuts-slurm_$num.out" \
 		../../"$name_of_script" "$num"
 		
 	cd ..

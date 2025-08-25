@@ -16,7 +16,7 @@ R__LOAD_LIBRARY(../../softwares/MiModule/lib/libMiModule.so);
 
 void get_vertices() 
 {
-  TH2F *hAll = new TH2F("hAll", "Vertices of all events;Y [mm];Z [mm]",
+  TH2F *hAll = new TH2F("hAll", "Vertices - straight tracks;Y [mm];Z [mm]",
   			2000, -2500, 2500,
   			2000, -2000, 2000);
   			
@@ -33,7 +33,7 @@ void get_vertices()
   	t->SetBranchAddress("Eventdata", &Eve);
   
   
-  	TH2F* hVertices = new TH2F("hVertices", "Vertex positions;Y [mm];Z [mm]",
+  	TH2F* hVertices = new TH2F("hVertices", "Vertices - straight tracks;Y [mm];Z [mm]",
   			  	   2000, -2500, 2500,     //ybins, ymin, ymax
   				   2000, -2000, 2000);    //zbins, zmin, zmax
   	//loop over entries
@@ -63,7 +63,7 @@ void get_vertices()
   
   	f->Close();
  }
- TFile *f_output_all = new TFile("DATA/all_vertices.root", "RECREATE");
+ TFile *f_output_all = new TFile("DATA/str_vertices.root", "RECREATE");
  hAll->Write();
  f_output_all->Close();
 }

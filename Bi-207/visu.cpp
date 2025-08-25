@@ -8,16 +8,16 @@
 
 void visu()
 {
- TFile* f = TFile::Open("DATA/all_vertices.root", "READ");
+ TFile* f = TFile::Open("DATA/str_vertices.root", "READ");
  TH2F* hVertices = (TH2F*)f->Get("hAll");
  
- TCanvas *c1 = new TCanvas("c1", "Vertex Distribution", 1000, 800);
+ TCanvas *c1 = new TCanvas("c1", "Vertex Distribution - straight tracks", 1000, 800);
  
  gStyle->SetNumberContours(255);
  
  gStyle->SetStatFontSize(0.04);
  
- hVertices->SetTitle("All events;Y [mm];Z [mm]");
+ hVertices->SetTitle("Vertices - straight tracks;Y [mm];Z [mm]");
  
  hVertices->Draw("COLZ");
  c1->SetLogz();
@@ -35,7 +35,7 @@ void visu()
   c1->Modified();
   c1->Update();
  
- c1->SaveAs("DATA/all_vert_visu.png");
+ c1->SaveAs("DATA/str_vert_visu.png");
  
 }
 
