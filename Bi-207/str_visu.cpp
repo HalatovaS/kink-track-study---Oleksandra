@@ -6,9 +6,9 @@
 #include <TPaveStats.h>
 #include <iostream>
 
-void visu()
+void str_visu()
 {
- TFile* f = TFile::Open("DATA/str_vertices.root", "READ");
+ TFile* f = TFile::Open("DATA/total_str_vertices.root", "READ");
  TH2F* hVertices = (TH2F*)f->Get("hAll");
  
  TCanvas *c1 = new TCanvas("c1", "Vertex Distribution - straight tracks", 1000, 800);
@@ -18,9 +18,10 @@ void visu()
  gStyle->SetStatFontSize(0.04);
  
  hVertices->SetTitle("Vertices - straight tracks;Y [mm];Z [mm]");
+ hVertices->GetXaxis()->SetLabelSize(0.025);
+ hVertices->GetYaxis()->SetLabelSize(0.025);
  
  hVertices->Draw("COLZ");
- c1->SetLogz();
  
  c1->Update();
  

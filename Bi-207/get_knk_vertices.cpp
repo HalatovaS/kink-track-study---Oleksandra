@@ -2,6 +2,8 @@
 #include "../../softwares/MiModule/include/MiVertex.h"
 #include "../../softwares/MiModule/include/MiVector3D.h"
 #include "../../softwares/MiModule/include/MiPTD.h"
+#include "../../softwares/MiModule/include/MiCD.h"
+#include "../../softwares/MiModule/include/MiSD.h"
 
 #include <TFile.h>
 #include <TTree.h>
@@ -26,6 +28,8 @@ void get_knk_vertices()
   	TString infile = folder + "/Default.root"; //Concatenates the folder path with the input file name
   	TString outfile = folder + "/knk_vertices.root"; //Same, but output
   	
+  	std::cout << "Processing folder " << folder << std::endl;
+  	
   	TFile* f = TFile::Open(infile, "READ");
   	TTree* t = (TTree*)f->Get("Event"); //get tree named "Event"
   
@@ -41,16 +45,24 @@ void get_knk_vertices()
   	for (Long64_t ie=0; ie<nentries; ie++)  //ie is for i entries
   	{
   		t->GetEntry(ie); //loads the ith event from Default.root to MiEvent Eve object
-  	
-  		//loop over particles in the event i
-  		int nPart = Eve->getPTDNoPart(); 
-  		for (int ip=0; ip<nPart; ip++) 
+  		
+  		MiPTD* ptd = Eve->getPTD();
+  		
+  		int nParts = Eve->getPTDNoPart();
+  		for (int ip=0; ip<nParts; ip++) 
   		{
-  			int nVert = Eve->getPTDNoVert(ip); 
-  			for (int iv=0; iv<nVert; iv++) 
+  			MiCDParticle* particle = ptd->getpart(ip);
+  			
+  			int charge = particle->getcharge();
+  			if (charge != 1000) continue;
+  			
+  			int nVerts = Eve->getPTDNoVert(ip);
+  			if (nVerts > 0)
   			{
-  				double y = Eve->getPTDverY(ip, iv);
-  				double z = Eve->getPTDverZ(ip, iv);
+  				double x = Eve->getPTDverX(ip, 0);
+  				double y = Eve->getPTDverY(ip, 0);
+  				double z = Eve->getPTDverZ(ip, 0);  
+  				
   				hVertices->Fill(y, z);
   				hAll->Fill(y, z);
   			}
@@ -63,11 +75,14 @@ void get_knk_vertices()
   
   	f->Close();
  }
- TFile *f_output_all = new TFile("DATA/knk_vertices.root", "RECREATE");
+ 
+ TFile* f_output_all = new TFile("DATA/total_knk_vertices.root", "RECREATE");
  hAll->Write();
  f_output_all->Close();
 }
   					  					  
   
+  
+
   
 

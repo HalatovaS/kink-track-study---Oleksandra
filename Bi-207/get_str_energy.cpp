@@ -22,6 +22,8 @@ void get_str_energy()
   	TString infile = folder + "/Default.root"; //Concatenates the folder path with the input file name
   	TString outfile = folder + "/str_energy.root"; //Same, but output
   	
+  	std::cout << "Processing folder " << folder << std::endl;
+  	
   	TFile* f = TFile::Open(infile, "READ");
   	TTree* t = (TTree*)f->Get("Event"); //get tree named "Event"
   
@@ -32,6 +34,8 @@ void get_str_energy()
   			  	   
   	//loop over entries
   	Long64_t nentries = t->GetEntries(); //returns number of entries stored in the tree
+  	std::cout << "Number of entries in tree: " << nentries << std::endl;
+  	
   	for (Long64_t ie=0; ie<nentries; ie++)  //ie is for i entries
   	{
   		t->GetEntry(ie); //loads the ith event from Default.root to MiEvent Eve object
