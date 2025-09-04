@@ -6,9 +6,9 @@
 #include <TPaveStats.h>
 #include <iostream>
 
-void energy_str_visu()
+void energy_knk_visu()
 {
- TFile* f = TFile::Open("DATA/total_str_energy.root", "READ");
+ TFile* f = TFile::Open("DATA/total_knk_energy.root", "READ");
  TH1D* hEnergy = (TH1D*)f->Get("hAll");
  
  TCanvas *c1 = new TCanvas("c1", "Energy spectrum - straight tracks", 1000, 800);
@@ -18,7 +18,7 @@ void energy_str_visu()
  
  hEnergy->SetLineColor(kBlue);
  hEnergy->SetLineWidth(2);
- hEnergy->SetTitle("Energy spectrum - straight tracks;Energy [keV];N");
+ hEnergy->SetTitle("Energy spectrum - kinked tracks;Energy [keV];N");
  
  hEnergy->Draw("HIST");
  
@@ -35,6 +35,11 @@ void energy_str_visu()
  c1->Modified();
  c1->Update();
   
- c1->SaveAs("DATA/str_energy_spectrum.png");
+ c1->SaveAs("DATA/knk_energy_spectrum.png");
  
 }
+ 
+ 
+ 
+
+

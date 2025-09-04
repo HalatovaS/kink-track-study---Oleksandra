@@ -14,17 +14,17 @@
 
 R__LOAD_LIBRARY(../../softwares/MiModule/lib/libMiModule.so);
 
-void get_str_energy()
+void get_knk_energy()
 {
- TH1D *hAll = new TH1D("hAll", "Energy spectrum - straight tracks;Energy [keV];N", 200, 0, 2000);
+ TH1D *hAll = new TH1D("hAll", "Energy spectrum - kinked tracks;Energy [keV];N", 200, 0, 2000);
  
  for (int i=0; i<100; i++) 
   {
   	TString folder = Form("DATA/%d", i);
   	TString infile = folder + "/Default.root"; //Concatenates the folder path with the input file name
-  	TString outfile = folder + "/str_energy.root"; //Same, but output
+  	TString outfile = folder + "/new_knk_energy.root"; //Same, but output
   	
-  	std::cout << "Processing folder " << folder << std::endl;
+  	
   	
   	TFile* f = TFile::Open(infile, "READ");
   	TTree* t = (TTree*)f->Get("Event"); //get tree named "Event"
@@ -32,11 +32,10 @@ void get_str_energy()
   	MiEvent* Eve = new MiEvent(); //Attach MiEvent object
   	t->SetBranchAddress("Eventdata", &Eve);
   	
-  	TH1D* hEnergy = new TH1D("hEnergy", "Energy - straight tracks;Energy [keV];N", 200, 0, 2000); 
+  	TH1D* hEnergy = new TH1D("hEnergy", "Energy - kinked tracks;Energy [keV];N", 200, 0, 2000); 
   			  	   
   	//loop over entries
   	Long64_t nentries = t->GetEntries(); //returns number of entries stored in the tree
-  	std::cout << "Number of entries in tree: " << nentries << std::endl;
   	
   	for (Long64_t ie=0; ie<nentries; ie++)  //ie is for i entries
   	{
@@ -45,14 +44,12 @@ void get_str_energy()
   		MiPTD* ptd = Eve->getPTD();
   		int nParts = Eve->getPTDNoPart();
   		
-  		std::cout << "1) Event " << ie << " -> " << nParts << " particles" << std::endl;
   		
   		for (int ip=0; ip<nParts; ip++) 
   		{
   			MiCDParticle* particle = ptd->getpart(ip);
   			int charge = particle->getcharge();
   			
-  			std::cout << "2) Particle " << ip << " charge = " << charge << std::endl;
   			
   			if (charge != 1000) continue;
   			
@@ -61,14 +58,13 @@ void get_str_energy()
   				continue;
   			}
   			
+
+  			
   			MiCDCaloHit* hit = particle->getcalohit(0);
   			if (hit)
   			{
   				double En = hit->getE();
-  				
-  				std::cout << "Particle " << ip << " -> " << En << "keV" << std::endl; 
-  				  	
-  				  	
+  					
   				hEnergy->Fill(En);
   				hAll->Fill(En);
   			}
@@ -82,7 +78,7 @@ void get_str_energy()
   	f->Close();
   	
   }
-  TFile *f_output_all = new TFile("DATA/total_str_energy.root", "RECREATE");
+  TFile *f_output_all = new TFile("DATA/new_total_knk_energy.root", "RECREATE");
   hAll->Write();
   f_output_all->Close();
  } 	

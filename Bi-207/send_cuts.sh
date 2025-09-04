@@ -17,6 +17,6 @@ MY_DIR=/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207
 
 num=$1
 
-#${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio -p ${MY_DIR}/str_SNCutsAndMiModule.conf -o ${MY_DIR}/DATA/$num/str_cut_reco_$num.brio
+${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio -p ${MY_DIR}/str_SNCutsAndMiModule.conf -o ${MY_DIR}/DATA/$num/str_cut_reco_$num.brio
 
-${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio -p ${MY_DIR}/knk_SNCutsAndMiModule.conf -o ${MY_DIR}/DATA/$num/knk_cut_reco_$num.brio
+#${FAL_DIR}/flreconstruct -i ${MY_DIR}/DATA/$num/CM_reco_Bi_$num.brio -p ${MY_DIR}/knk_SNCutsAndMiModule.conf -o ${MY_DIR}/DATA/$num/knk_cut_reco_$num.brio

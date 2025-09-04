@@ -6,18 +6,18 @@
 #include <TPaveStats.h>
 #include <iostream>
 
-void str_visu()
+void knk_visu()
 {
- TFile* f = TFile::Open("DATA/total_knk_vertices.root", "READ");
+ TFile* f = TFile::Open("DATA/976_total_knk_vertices.root", "READ");
  TH2F* hVertices = (TH2F*)f->Get("hAll");
  
- TCanvas *c1 = new TCanvas("c1", "Vertex Distribution - kinked tracks", 1000, 800);
+ TCanvas *c1 = new TCanvas("c1", "2nd peak Vertex Distribution - kinked", 1000, 800);
  
  gStyle->SetNumberContours(255);
  
  gStyle->SetStatFontSize(0.04);
  
- hVertices->SetTitle("Vertices - kinked tracks;Y [mm];Z [mm]");
+ hVertices->SetTitle("Vertices from the 2nd peak - kinked;Y [mm];Z [mm]");
  hVertices->GetXaxis()->SetLabelSize(0.025);
  hVertices->GetYaxis()->SetLabelSize(0.025);
  
@@ -36,7 +36,7 @@ void str_visu()
   c1->Modified();
   c1->Update();
  
- c1->SaveAs("DATA/knk_vert_visu.png");
+ c1->SaveAs("DATA/976_knk_vert_visu.png");
  
 }
 
