@@ -22,7 +22,7 @@ void get_knk_energy()
   {
   	TString folder = Form("DATA/%d", i);
   	TString infile = folder + "/Default.root"; //Concatenates the folder path with the input file name
-  	TString outfile = folder + "/new_knk_energy.root"; //Same, but output
+  	TString outfile = folder + "/ellipse_knk_energy.root"; //Same, but output
   	
   	
   	
@@ -35,30 +35,26 @@ void get_knk_energy()
   	TH1D* hEnergy = new TH1D("hEnergy", "Energy - kinked tracks;Energy [keV];N", 200, 0, 2000); 
   			  	   
   	//loop over entries
-  	Long64_t nentries = t->GetEntries(); //returns number of entries stored in the tree
+  	Long64_t nentries = t->GetEntries();
   	
-  	for (Long64_t ie=0; ie<nentries; ie++)  //ie is for i entries
+  	for (Long64_t ie=0; ie<nentries; ie++)  
   	{
-  		t->GetEntry(ie); //loads the ith event from Default.root to MiEvent Eve object
+  		t->GetEntry(ie); 
   		
   		MiPTD* ptd = Eve->getPTD();
   		int nParts = Eve->getPTDNoPart();
-  		
-  		
   		for (int ip=0; ip<nParts; ip++) 
   		{
   			MiCDParticle* particle = ptd->getpart(ip);
   			int charge = particle->getcharge();
   			
-  			
   			if (charge != 1000) continue;
   			
   			std::vector<MiCDCaloHit>* hits = particle->getcalohitv();
-  			if (hits->empty()){
+  			if (hits->empty())
+  			{
   				continue;
   			}
-  			
-
   			
   			MiCDCaloHit* hit = particle->getcalohit(0);
   			if (hit)
@@ -78,7 +74,7 @@ void get_knk_energy()
   	f->Close();
   	
   }
-  TFile *f_output_all = new TFile("DATA/new_total_knk_energy.root", "RECREATE");
+  TFile *f_output_all = new TFile("DATA/ellipse_total_knk_energy.root", "RECREATE");
   hAll->Write();
   f_output_all->Close();
  } 	

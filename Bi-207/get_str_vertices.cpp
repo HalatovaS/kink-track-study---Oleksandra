@@ -17,47 +17,41 @@ R__LOAD_LIBRARY(../../softwares/MiModule/lib/libMiModule.so);
 
 void get_str_vertices() 
 {
-  TH2F *hAll = new TH2F("hAll", "Vertices - straight tracks (2nd peak);Y [mm];Z [mm]",
+  TH2F *hAll = new TH2F("hAll", "Vertices - straight tracks;Y [mm];Z [mm]",
   			2000, -2500, 2500,
   			2000, -2000, 2000);
   			
   for (int i=0; i<100; i++) 
   {
   	TString folder = Form("DATA/%d", i);
-  	TString infile = folder + "/Default.root"; //Concatenates the folder path with the input file name
-  	TString outfile = folder + "/976_str_vertices.root"; //Same, but output
+  	TString infile = folder + "/Default.root"; 
+  	TString outfile = folder + "/ellipse_str_vertices.root"; 
   	
   	std::cout << "Processing folder " << folder << std::endl;
   	
   	TFile* f = TFile::Open(infile, "READ");
-  	TTree* t = (TTree*)f->Get("Event"); //get tree named "Event"
+  	TTree* t = (TTree*)f->Get("Event"); 
   
-  	MiEvent* Eve = new MiEvent(); //Attach MiEvent object
+  	MiEvent* Eve = new MiEvent(); 
   	t->SetBranchAddress("Eventdata", &Eve);
   
   
-  	TH2F* hVertices = new TH2F("hVertices", "Vertices - straight tracks (2nd peak);Y [mm];Z [mm]",
+  	TH2F* hVertices = new TH2F("hVertices", "Vertices - straight tracks;Y [mm];Z [mm]",
   			  	   2000, -2500, 2500,     //ybins, ymin, ymax
   				   2000, -2000, 2000);    //zbins, zmin, zmax
   	//loop over entries
-  	Long64_t nentries = t->GetEntries(); //returns number of entries stored in the tree
-  	std::cout << "Number of entries in tree: " << nentries << std::endl;
+  	Long64_t nentries = t->GetEntries(); 
   	
-  	for (Long64_t ie=0; ie<nentries; ie++)  //ie is for i entries
+  	for (Long64_t ie=0; ie<nentries; ie++)  
   	{
-  		t->GetEntry(ie); //loads the ith event from Default.root to MiEvent Eve object
+  		t->GetEntry(ie); 
   		
   		MiPTD* ptd = Eve->getPTD();
-  		
   		int nParts = Eve->getPTDNoPart();
-
-  		
   		for (int ip=0; ip<nParts; ip++) 
   		{
   			MiCDParticle* particle = ptd->getpart(ip);
-  			
   			int charge = particle->getcharge();
-  			
   			if (charge != 1000) continue;
   			
   			std::vector<MiCDCaloHit>* caloHits = particle->getcalohitv();
@@ -70,22 +64,15 @@ void get_str_vertices()
   			MiCDCaloHit* hit = particle->getcalohit(0);
   			if (hit)
   			{
-  				double En = hit->getE();
- 				
- 				if (En >= 800 && En <= 1000) 
- 				{
-  					std::cout << "Event " << ie << ", Energy = " << En << std::endl;
-  					int nVerts = Eve->getPTDNoVert(ip);
+  				int nVerts = Eve->getPTDNoVert(ip);
+  				if (nVerts > 0)
+  				{
+  					double x = Eve->getPTDverX(ip, 0);
+  					double y = Eve->getPTDverY(ip, 0);
+  					double z = Eve->getPTDverZ(ip, 0);  
   				
-  					if (nVerts > 0)
-  					{
-  						double x = Eve->getPTDverX(ip, 0);
-  						double y = Eve->getPTDverY(ip, 0);
-  						double z = Eve->getPTDverZ(ip, 0);  
-  				
-  						hVertices->Fill(y, z);
-  						hAll->Fill(y, z);
-  					}
+  					hVertices->Fill(y, z);
+  					hAll->Fill(y, z);
   				}
   			}
   		}
@@ -98,7 +85,7 @@ void get_str_vertices()
   	f->Close();
  }
  
- TFile* f_output_all = new TFile("DATA/976_total_str_vertices.root", "RECREATE");
+ TFile* f_output_all = new TFile("DATA/ellipse_total_str_vertices.root", "RECREATE");
  hAll->Write();
  f_output_all->Close();
 }

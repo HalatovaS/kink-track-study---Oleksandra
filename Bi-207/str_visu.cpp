@@ -8,16 +8,16 @@
 
 void str_visu()
 {
- TFile* f = TFile::Open("DATA/976_total_str_vertices.root", "READ");
+ TFile* f = TFile::Open("DATA/ellipse_total_str_vertices.root", "READ");
  TH2F* hVertices = (TH2F*)f->Get("hAll");
  
- TCanvas *c1 = new TCanvas("c1", "Vertex Distribution - straight tracks (2nd peak)", 1000, 800);
+ TCanvas *c1 = new TCanvas("c1", "Vertex Distribution - straight", 1000, 800);
  
  gStyle->SetNumberContours(255);
  
  gStyle->SetStatFontSize(0.04);
  
- hVertices->SetTitle("Vertices - straight tracks (2nd peak);Y [mm];Z [mm]");
+ hVertices->SetTitle("Vertices - straight tracks;Y [mm];Z [mm]");
  hVertices->GetXaxis()->SetLabelSize(0.025);
  hVertices->GetYaxis()->SetLabelSize(0.025);
  
@@ -36,7 +36,7 @@ void str_visu()
   c1->Modified();
   c1->Update();
  
- c1->SaveAs("DATA/976_str_vert_visu.png");
+ c1->SaveAs("DATA/ellipse_str_vert_visu.png");
  
 }
 

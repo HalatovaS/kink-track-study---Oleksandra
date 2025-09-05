@@ -18,7 +18,7 @@ R__LOAD_LIBRARY(../../softwares/MiModule/lib/libMiModule.so);
 
 void get_knk_vertices() 
 {
-  TH2F *hAll = new TH2F("hAll", "Vertices from the 2nd peak - kinked;Y [mm];Z [mm]",
+  TH2F *hAll = new TH2F("hAll", "Vertices - kinked tracks;Y [mm];Z [mm]",
   			2000, -2500, 2500,
   			2000, -2000, 2000);
   			
@@ -26,7 +26,7 @@ void get_knk_vertices()
   {
   	TString folder = Form("DATA/%d", i);
   	TString infile = folder + "/Default.root"; //Concatenates the folder path with the input file name
-  	TString outfile = folder + "/976_knk_vertices.root"; //Same, but output
+  	TString outfile = folder + "/ellipse_knk_vertices.root"; //Same, but output
   	
   	std::cout << "Processing folder " << folder << std::endl;
   	
@@ -37,7 +37,7 @@ void get_knk_vertices()
   	t->SetBranchAddress("Eventdata", &Eve);
   
   
-  	TH2F* hVertices = new TH2F("hVertices", "Vertices - 2nd peak (kinked);Y [mm];Z [mm]",
+  	TH2F* hVertices = new TH2F("hVertices", "Vertices - kinked;Y [mm];Z [mm]",
   			  	   2000, -2500, 2500,     //ybins, ymin, ymax
   				   2000, -2000, 2000);    //zbins, zmin, zmax
   	//loop over entries
@@ -47,12 +47,10 @@ void get_knk_vertices()
   		t->GetEntry(ie); //loads the ith event from Default.root to MiEvent Eve object
   		
   		MiPTD* ptd = Eve->getPTD();
-  		
   		int nParts = Eve->getPTDNoPart();
   		for (int ip=0; ip<nParts; ip++) 
   		{
   			MiCDParticle* particle = ptd->getpart(ip);
-  			
   			int charge = particle->getcharge();
   			if (charge != 1000) continue;
   			
@@ -66,20 +64,15 @@ void get_knk_vertices()
   			MiCDCaloHit* hit = particle->getcalohit(0);
   			if (hit)
   			{
-  				double En = hit->getE();
- 				
- 				if (En >= 800 && En <= 1000) 
- 				{
-  					int nVerts = Eve->getPTDNoVert(ip);
-  					if (nVerts > 0)
-  					{
-  						double x = Eve->getPTDverX(ip, 0);
-  						double y = Eve->getPTDverY(ip, 0);
-  						double z = Eve->getPTDverZ(ip, 0);  
-  				
-  						hVertices->Fill(y, z);
-  						hAll->Fill(y, z);
-  					}
+  				int nVerts = Eve->getPTDNoVert(ip);
+  				if (nVerts > 0)
+  				{
+  					double x = Eve->getPTDverX(ip, 0);
+  					double y = Eve->getPTDverY(ip, 0);
+ 					double z = Eve->getPTDverZ(ip, 0);  
+  			
+  					hVertices->Fill(y, z);
+  					hAll->Fill(y, z);
   				}
   			}
   		}
@@ -92,7 +85,7 @@ void get_knk_vertices()
   	f->Close();
  }
  
- TFile* f_output_all = new TFile("DATA/976_total_knk_vertices.root", "RECREATE");
+ TFile* f_output_all = new TFile("DATA/ellipse_total_knk_vertices.root", "RECREATE");
  hAll->Write();
  f_output_all->Close();
 }

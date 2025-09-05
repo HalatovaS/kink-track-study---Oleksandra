@@ -12,7 +12,7 @@
 source ${THRONG_DIR}/config/supernemo_profile.bash  
 snswmgr_load_setup falaise@5.1.5
 
-root get_str_vertices.cpp
+#root get_str_vertices.cpp
 #root get_knk_vertices.cpp
-#root get_str_energy.cpp
+root get_str_energy.cpp
 #root get_knk_energy.cpp

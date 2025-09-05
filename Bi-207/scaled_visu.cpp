@@ -9,8 +9,8 @@
 
 void scaled_visu()
 {
-  TFile* f_str = TFile::Open("DATA/scaled_str_energy.root", "READ");
-  TFile* f_knk = TFile::Open("DATA/scaled_knk_energy.root", "READ");
+  TFile* f_str = TFile::Open("DATA/ellipse_scaled_str_energy.root", "READ");
+  TFile* f_knk = TFile::Open("DATA/ellipse_scaled_knk_energy.root", "READ");
   
   TH1D* hStr = (TH1D*)f_str->Get("hScaled");
   TH1D* hKnk = (TH1D*)f_knk->Get("hScaled");
@@ -58,7 +58,7 @@ void scaled_visu()
   c->Modified();
   c->Update();
   
-  c->SaveAs("DATA/scaled_all.png");
+  c->SaveAs("DATA/ellipse_scaled_all.png");
   
   double intStr = hStr->Integral();
   double intKnk = hKnk->Integral();
