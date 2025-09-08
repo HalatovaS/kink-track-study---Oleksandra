@@ -13,12 +13,12 @@ for ((num=first_val; num<=second_val; num++))
 do 
 	mkdir -p "$num"
 	
-	cp ../simu.profile "$num"
-	cp ../reco.conf "$num"
-	cp ../pipeline.conf "$num"
+	cp ../Bi-207/simu.profile "$num"
+	cp ../Bi-207/reco.conf "$num"
+	cp ../Bi-207/pipeline.conf "$num"
+	cp ../Bi-207/simu_setup.conf "$num"
 	cp ../str_SNCutsAndMiModule.conf "$num"
 	cp ../knk_SNCutsAndMiModule.conf "$num"
-	cp ../simu_setup.conf "$num"
 		
 		cd "$num"
 		
