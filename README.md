@@ -13,4 +13,5 @@ In a **Bi-207 folder** there are:
 A new sample of events can be simulated using manager.sh:
 ```bash
 ./manager.sh 100 200 send_simu.sh
+
 It will create 100 folders from 100 to 200.
