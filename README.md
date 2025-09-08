@@ -21,3 +21,19 @@ There were used calibration cuts implemented to SNCuts. SNCuts pipeline is merge
 ./manager.sh 0 99 send_cuts.sh
 ```
 Running this command will apply cuts to a .brio files in a specified folders, which were produced by send_simu.sh. It will also create Default.root file in each folder. 
+## send_get_smth.sh usage
+send_get_smth.sh is used to send jod, that will extract the vertex positions or energy of calo hit from the Deafault.root. You need to uncomment what you need to run inside the code and then run
+```bash
+sbatch send_get_smth.sh
+```
+### Histogram of the vertices
+To extract the positions of verices from Defaut.root in each folder and to create a histogram, which will be saved as a .root file, you need to uncomment *root get_str/knk_vertices.cpp*. Visualization is kept separate in a str/knk_visu.cpp. As a result you get the .png histogram.
+### Energy spectrum 
+To extract energy and save in a .root file use get_str/knk_energy.cpp. Then, if 2 separate 1D histograms are needed, use str/knk_visu.cpp. If you need to plot straight and kinked on one historam, run scale_energy.cpp to scale straight and kinked histograms and create a .root histogram with both spectra first. Then run scaled_visu.cpp to visualize.  
+
+
+
+
+
+
+
