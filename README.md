@@ -16,4 +16,8 @@ A new sample of events can be simulated using manager.sh:
 ```
 It will create 100 folders from 100 to 199.
 ##Applying cuts
-
+There were used calibration cuts implemented to SNCuts. SNCuts pipeline is merged with MiModule pipeline and kept separate for straight (*str_SNCutsAndMiModule.conf*) and kinked (*knk_SNCutsAndMiModule.conf*) tracks. You wiil also need to enter your paths in pipelines to **/simu.profile, SNCuts/lib/, MiModule/lib/ and CalibrationTools/lib/**. To apply cuts run
+```bash
+./manager.sh 0 99 send_cuts.sh
+```
+Running this command will apply cuts to a .brio files in a specified folders, which were produced by send_simu.sh. It will also create Default.root file in each folder. 
