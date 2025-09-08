@@ -1,8 +1,8 @@
-#include "../../softwares/MiModule/include/MiEvent.h"
-#include "../../softwares/MiModule/include/MiCD.h"
-#include "../../softwares/MiModule/include/MiCDParticle.h"
-#include "../../softwares/MiModule/include/MiCDCaloHit.h"
-#include "../../softwares/MiModule/include/MiPTD.h"
+#include "../softwares/MiModule/include/MiEvent.h"
+#include "../softwares/MiModule/include/MiCD.h"
+#include "../softwares/MiModule/include/MiCDParticle.h"
+#include "../softwares/MiModule/include/MiCDCaloHit.h"
+#include "../softwares/MiModule/include/MiPTD.h"
 
 #include <TFile.h>
 #include <TTree.h>

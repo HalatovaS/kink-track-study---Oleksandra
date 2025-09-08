@@ -1,9 +1,9 @@
-#include "../../softwares/MiModule/include/MiEvent.h"
-#include "../../softwares/MiModule/include/MiVertex.h"
-#include "../../softwares/MiModule/include/MiVector3D.h"
-#include "../../softwares/MiModule/include/MiPTD.h"
-#include "../../softwares/MiModule/include/MiCD.h"
-#include "../../softwares/MiModule/include/MiSD.h"
+#include "../softwares/MiModule/include/MiEvent.h"
+#include "../softwares/MiModule/include/MiVertex.h"
+#include "../softwares/MiModule/include/MiVector3D.h"
+#include "../softwares/MiModule/include/MiPTD.h"
+#include "../softwares/MiModule/include/MiCD.h"
+#include "../softwares/MiModule/include/MiSD.h"
 
 #include <TFile.h>
 #include <TTree.h>
