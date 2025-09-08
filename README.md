@@ -15,7 +15,7 @@ A new sample of events can be simulated using manager.sh:
 ./manager.sh 100 199 send_simu.sh
 ```
 It will create 100 folders from 100 to 199.
-##Applying cuts
+## Applying cuts
 There were used calibration cuts implemented to SNCuts. SNCuts pipeline is merged with MiModule pipeline and kept separate for straight (*str_SNCutsAndMiModule.conf*) and kinked (*knk_SNCutsAndMiModule.conf*) tracks. You wiil also need to enter your paths in pipelines to **/simu.profile, SNCuts/lib/, MiModule/lib/ and CalibrationTools/lib/**. To apply cuts run
 ```bash
 ./manager.sh 0 99 send_cuts.sh
