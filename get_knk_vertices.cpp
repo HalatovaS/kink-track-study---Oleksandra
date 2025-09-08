@@ -13,7 +13,7 @@
 #include <vector>
 #include <iostream>
 
-R__LOAD_LIBRARY(../../softwares/MiModule/lib/libMiModule.so);
+R__LOAD_LIBRARY(../softwares/MiModule/lib/libMiModule.so);
 
 
 void get_knk_vertices() 
@@ -25,15 +25,15 @@ void get_knk_vertices()
   for (int i=0; i<100; i++) 
   {
   	TString folder = Form("DATA/%d", i);
-  	TString infile = folder + "/Default.root"; //Concatenates the folder path with the input file name
-  	TString outfile = folder + "/ellipse_knk_vertices.root"; //Same, but output
+  	TString infile = folder + "/Default.root"; 
+  	TString outfile = folder + "/knk_vertices.root"; 
   	
   	std::cout << "Processing folder " << folder << std::endl;
   	
   	TFile* f = TFile::Open(infile, "READ");
-  	TTree* t = (TTree*)f->Get("Event"); //get tree named "Event"
+  	TTree* t = (TTree*)f->Get("Event"); 
   
-  	MiEvent* Eve = new MiEvent(); //Attach MiEvent object
+  	MiEvent* Eve = new MiEvent(); 
   	t->SetBranchAddress("Eventdata", &Eve);
   
   
@@ -41,10 +41,10 @@ void get_knk_vertices()
   			  	   2000, -2500, 2500,     //ybins, ymin, ymax
   				   2000, -2000, 2000);    //zbins, zmin, zmax
   	//loop over entries
-  	Long64_t nentries = t->GetEntries(); //returns number of entries stored in the tree
-  	for (Long64_t ie=0; ie<nentries; ie++)  //ie is for i entries
+  	Long64_t nentries = t->GetEntries(); 
+  	for (Long64_t ie=0; ie<nentries; ie++) 
   	{
-  		t->GetEntry(ie); //loads the ith event from Default.root to MiEvent Eve object
+  		t->GetEntry(ie); 
   		
   		MiPTD* ptd = Eve->getPTD();
   		int nParts = Eve->getPTDNoPart();
@@ -85,7 +85,7 @@ void get_knk_vertices()
   	f->Close();
  }
  
- TFile* f_output_all = new TFile("DATA/ellipse_total_knk_vertices.root", "RECREATE");
+ TFile* f_output_all = new TFile("DATA/total_knk_vertices.root", "RECREATE");
  hAll->Write();
  f_output_all->Close();
 }

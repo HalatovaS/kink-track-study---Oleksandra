@@ -8,7 +8,7 @@
 
 void knk_visu()
 {
- TFile* f = TFile::Open("DATA/ellipse_total_knk_vertices.root", "READ");
+ TFile* f = TFile::Open("DATA/total_knk_vertices.root", "READ");
  TH2F* hVertices = (TH2F*)f->Get("hAll");
  
  TCanvas *c1 = new TCanvas("c1", "Vertex Distribution - kinked", 1000, 800);
@@ -36,7 +36,7 @@ void knk_visu()
   c1->Modified();
   c1->Update();
  
- c1->SaveAs("DATA/ellipse_knk_vert_visu.png");
+ c1->SaveAs("DATA/knk_vert_visu.png");
  
 }
 

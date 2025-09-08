@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DATA_DIR="/sps/nemo/scratch/ohalatova/kink_track_study/Bi-207"
+DATA_DIR="/sps/nemo/scratch/ohalatova/kink_track_study"
 
 mkdir -p DATA
 cd DATA

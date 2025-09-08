@@ -12,7 +12,7 @@
 #include <vector>
 #include <iostream>
 
-R__LOAD_LIBRARY(../../softwares/MiModule/lib/libMiModule.so);
+R__LOAD_LIBRARY(../softwares/MiModule/lib/libMiModule.so);
 
 void get_str_energy()
 {
@@ -22,7 +22,7 @@ void get_str_energy()
   {
   	TString folder = Form("DATA/%d", i);
   	TString infile = folder + "/Default.root"; //Concatenates the folder path with the input file name
-  	TString outfile = folder + "/ellipse_str_energy.root"; //Same, but output
+  	TString outfile = folder + "/str_energy.root"; //Same, but output
   	
   	std::cout << "Processing folder " << folder << std::endl;
   	
@@ -74,7 +74,7 @@ void get_str_energy()
   	f->Close();
   	
   }
-  TFile *f_output_all = new TFile("DATA/ellipse_total_str_energy.root", "RECREATE");
+  TFile *f_output_all = new TFile("DATA/total_str_energy.root", "RECREATE");
   hAll->Write();
   f_output_all->Close();
  } 	

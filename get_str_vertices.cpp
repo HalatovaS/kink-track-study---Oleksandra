@@ -12,7 +12,7 @@
 #include <vector>
 #include <iostream>
 
-R__LOAD_LIBRARY(../../softwares/MiModule/lib/libMiModule.so);
+R__LOAD_LIBRARY(../softwares/MiModule/lib/libMiModule.so);
 
 
 void get_str_vertices() 
@@ -25,7 +25,7 @@ void get_str_vertices()
   {
   	TString folder = Form("DATA/%d", i);
   	TString infile = folder + "/Default.root"; 
-  	TString outfile = folder + "/ellipse_str_vertices.root"; 
+  	TString outfile = folder + "/str_vertices.root"; 
   	
   	std::cout << "Processing folder " << folder << std::endl;
   	
@@ -85,7 +85,7 @@ void get_str_vertices()
   	f->Close();
  }
  
- TFile* f_output_all = new TFile("DATA/ellipse_total_str_vertices.root", "RECREATE");
+ TFile* f_output_all = new TFile("DATA/total_str_vertices.root", "RECREATE");
  hAll->Write();
  f_output_all->Close();
 }

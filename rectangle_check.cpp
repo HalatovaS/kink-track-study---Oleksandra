@@ -12,7 +12,7 @@
 #include <iostream>
 #include <cmath>
 
-R__LOAD_LIBRARY(../../softwares/MiModule/lib/libMiModule.so);
+R__LOAD_LIBRARY(../softwares/MiModule/lib/libMiModule.so);
 
 bool isInYZones(double y)
 {
