@@ -7,7 +7,7 @@
 #include <TLegend.h>
 #include <iostream>
 
-void comparison()
+void comparison_str()
 {
   TFile* f_strNew = TFile::Open("DATA/ellipse_scaled_str_energy.root", "READ");
   TFile* f_strOld = TFile::Open("DATA/scaled_str_energy.root", "READ");
