@@ -47,7 +47,7 @@ void comparison_knk()
   c2->Modified();
   c2->Update();
   
-  c2->SaveAs("DATA/comparison_str.png");
+  c2->SaveAs("DATA/comparison_knk.png");
   
 }
   
