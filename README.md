@@ -14,7 +14,7 @@ A new sample of events can be simulated using manager.sh:
 ```bash
 ./manager.sh 100 199 send_simu.sh
 ```
-It will create 100 folders from 100 to 199.
+(It will create 100 folders from 100 to 199.)
 ## Applying cuts
 There were used calibration cuts implemented to SNCuts. SNCuts pipeline is merged with MiModule pipeline and kept separate for straight (*str_SNCutsAndMiModule.conf*) and kinked (*knk_SNCutsAndMiModule.conf*) tracks. You wiil also need to enter your paths in pipelines to **/simu.profile, SNCuts/lib/, MiModule/lib/ and CalibrationTools/lib/**. To apply cuts run
 ```bash
@@ -39,7 +39,3 @@ sbatch send_get_smth.sh
 To extract the positions of verices from Defaut.root in each folder and to create a histogram, which will be saved as a .root file, you need to uncomment *root get_str/knk_vertices.cpp*. Visualization is kept separate in a str/knk_visu.cpp. As a result you get the .png histogram.
 ### Energy spectrum 
 To extract energy and save in a .root file use get_str/knk_energy.cpp. Then, if 2 separate 1D histograms are needed, use energy_str/knk_visu.cpp. If you need to plot straight and kinked on one historam, run scale_energy.cpp to scale straight and kinked histograms and create a .root histogram with both spectra first. Then run scaled_visu.cpp to visualize.  
-
-
-
-
