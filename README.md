@@ -28,7 +28,7 @@ delete.sh allows to remove
 - str/knk_energy.root;
 - str/knk_cut_reco_$num.brio;
 - log file;
-from all $num folders inside the DATA. Comment what you need to keep.
+  from all $num folders inside the DATA. Comment what you need to keep.
 ## send_get_smth.sh usage
 send_get_smth.sh is used to send jod, that will extract the vertex positions or energy of calo hit from the Deafault.root. You need to uncomment what you need to run inside the code and then run
 ```bash
