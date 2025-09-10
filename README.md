@@ -40,4 +40,4 @@ sbatch send_get_smth.sh
 To extract the positions of verices from Defaut.root in each folder and to create a histogram, which will be saved as a .root file, you need to uncomment root get_str/knk_vertices.cpp. Visualization is kept separate in a str/knk_visu.cpp. As a result you get the .png histogram.
 ### Energy spectrum 
 To extract energy and save in a .root file uncomment get_str/knk_energy.cpp. Then, if 2 separate 1D histograms are needed, use energy_str/knk_visu.cpp. If you need to plot straight and kinked on one historam, run scale_energy.cpp to scale straight and kinked histograms and create a .root histogram with both spectra first. Then run scaled_visu.cpp to visualize.  
-<img width="720" height="529" alt="image" src="https://github.com/user-attachments/assets/02886232-86d1-44b9-8d04-c8a7bcde079f" />
+
